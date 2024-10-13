@@ -1,0 +1,13 @@
+{
+  "log": {
+    "log_directory": "./logs/"
+  },
+  "filter_world": "",
+  "result_flag": "graph",
+  "strategy_name": "graph",
+  "repetition": 2,
+  "graph": {
+    "graphs_dir": "../graph/",
+    "subfolders": ["nodes", "edges"]
+  }
+  }
