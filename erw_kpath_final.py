@@ -43,22 +43,17 @@ def ERW_KPath(G: Graph, kappa: int, rho: int, beta: float):
 
 def MessagePropagation(G: Graph, start: int, kappa: int, omega: dict, beta: float):
     path = [start]
-    #print(f"Cammino: {start}", end="")
 
     for _ in range(kappa - 1):  # kappa - 1 perché il nodo di partenza è già nel cammino
         unvisited_neighbors = [v for v in G.iterNeighbors(path[-1]) if v not in path]
 
         if not unvisited_neighbors:
-            #print(" (terminato: nessun vicino non visitato)")
             break
 
         next_node = random.choice(unvisited_neighbors)
-        #print(f" -> {next_node}", end="")
 
         update_edge_weight(omega, path[-1], next_node, beta)
         path.append(next_node)
-
-    #print()
 
 
 def update_edge_weight(omega: dict, u: int, v: int, beta: float):

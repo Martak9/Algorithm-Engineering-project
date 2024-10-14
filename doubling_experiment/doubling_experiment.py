@@ -3,7 +3,7 @@ import json
 import time
 import networkit as nk
 import matplotlib.pyplot as plt
-from werw_test import werw_centrality_algorithm
+from werw_kpath_final import werw_centrality_algorithm
 from erw_kpath_final import erw_centrality_algorithm
 from tabulate import tabulate  # Assicurati di installare questa libreria con pip install tabulate
 

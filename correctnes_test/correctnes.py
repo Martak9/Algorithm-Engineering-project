@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 import networkit as nk
-from werw_test import werw_centrality_algorithm
+from werw_kpath_final import werw_centrality_algorithm
 from erw_kpath_final import erw_centrality_algorithm
 import csv
 import pandas as pd
