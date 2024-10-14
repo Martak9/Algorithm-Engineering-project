@@ -1,4 +1,4 @@
-from StdGraphGenerator import StdGraphGenerator
+from graph_generator import StdGraphGenerator
 import json
 
 class GraphGeneratorFactory:
