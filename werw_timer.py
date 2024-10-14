@@ -2,7 +2,6 @@ import random
 import networkit as nk
 from networkit import Graph
 from csv_writer import CsvWriter
-from collections import defaultdict
 import time
 
 
@@ -30,8 +29,6 @@ def WERW_KPath(G: Graph, kappa: int, rho: int, beta: float):
     omega = initialize_weights(G)
 
     for i in range(rho):
-        #if i % 1000 == 0:  # Print progress every 1000 iterations
-            #print(f"WERW_KPath progress: {i}/{rho} iterations")
         vn = random.choices(list(G.iterNodes()), weights=list(normalized_degrees.values()), k=1)[0]
 
         start_time = time.time()

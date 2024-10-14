@@ -77,7 +77,7 @@ def messagePropagation(n, N, k, b, G: Graph):
             break
         vn = neighbor_node(G, n, em)
         if vn is None:
-            continue  # L'arco non è connesso al nodo n, prova con un altro arco
+            continue
         Tn[em] = 1
         G.setWeight(n, vn, G.weight(n, vn) + b)
         n = vn

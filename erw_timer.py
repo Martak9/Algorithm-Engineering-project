@@ -59,7 +59,7 @@ def MessagePropagation(G: Graph, start: int, kappa: int, omega: dict, beta: floa
 
     path = [start]
 
-    for _ in range(kappa - 1):  # kappa - 1 perché il nodo di partenza è già nel cammino
+    for _ in range(kappa - 1):
         unvisited_neighbors = [v for v in G.iterNeighbors(path[-1]) if v not in path]
 
         if not unvisited_neighbors:
@@ -99,14 +99,12 @@ def erw_centrality_algorithm(G: Graph):
 def main():
     start_time = time.time()
 
-    # Load graph
     reader = nk.graphio.EdgeListReader(separator=" ", firstNode=0, continuous=False, directed=False)
     G = reader.read("./graph/edges/graph(n=500, m=44800).txt")
     print(f"Grafo caricato. Nodi: {G.numberOfNodes()}, Archi: {G.numberOfEdges()}")
 
     edge_centrality_sorted = erw_centrality_algorithm(G)
 
-    # Save results to CSV
     csv_data = []
     for u, v, weight in edge_centrality_sorted:
         dict_csv_row = {"edge": f"{u}, {v}", "centrality": weight}

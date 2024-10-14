@@ -65,7 +65,7 @@ def MessagePropagation(G: Graph, start: int, kappa: int, omega: dict, beta: floa
         path.append(next_node)
         visited.add(next_node)
 
-    print()  # Stampa una nuova riga alla fine del percorso
+    print()
 
 
 def werw_centrality_algorithm(G: Graph):

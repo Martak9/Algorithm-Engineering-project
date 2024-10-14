@@ -27,12 +27,10 @@ def ERW_KPath(G: Graph, j, q, b):
     assign_uniform_weights(G)
 
     for _ in range(q):
-        vn = random.choice(list(G.iterNodes()))  # Selezione uniforme del nodo iniziale
+        vn = random.choice(list(G.iterNodes()))
         N = 0
         messagePropagation(vn, N, j, b, G)
 
-    # Assegna i pesi finali come indici di centralità
-    # Non è necessario fare nulla qui, i pesi sono già aggiornati
 
 
 def messagePropagation(vn, N, j, b, G: Graph):
@@ -49,7 +47,6 @@ def messagePropagation(vn, N, j, b, G: Graph):
         em = random.choice(available_edges)
         vn_next = em[1]
 
-        # Aggiorna il peso dell'arco
         current_weight = G.weight(em[0], em[1])
         G.setWeight(em[0], em[1], current_weight + b)
 
@@ -58,19 +55,16 @@ def messagePropagation(vn, N, j, b, G: Graph):
         N += 1
 
 
-# Esempio di utilizzo
 def main():
     reader = networkit.graphio.EdgeListReader(separator=" ", firstNode=0, continuous=False, directed=False)
     G = reader.read("edgelist_example.txt")
 
-    # Parametri dell'algoritmo
-    j = 3  # Lunghezza massima del percorso
-    q = G.numberOfEdges() - 1  # Numero di iterazioni
-    b = 1.0 / G.numberOfEdges()  # Bonus
+    j = 3
+    q = G.numberOfEdges() - 1
+    b = 1.0 / G.numberOfEdges()
 
     ERW_KPath(G, j, q, b)
 
-    # Stampa i risultati
     print("Edge Centrality Values:")
     for u, v in G.iterEdges():
         print(f"Edge ({u}, {v}): {G.weight(u, v)}")
