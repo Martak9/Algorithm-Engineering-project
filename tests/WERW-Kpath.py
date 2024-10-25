@@ -37,6 +37,7 @@ def random_edge(G: Graph, Tn):
     return em
     """
 
+# Se gli archi sono già stati tutti visitati?
 def random_edge(G: Graph, n, Tn):
     edge_from_node = []
     for edge in G.iterEdges():
@@ -47,6 +48,7 @@ def random_edge(G: Graph, n, Tn):
         em = random.choice(edge_from_node)
     return em
 
+# Se non ci sono nodi vicini?
 def neighbor_node(G: Graph, n, em):
     for neighbor in G.iterNeighbors(n):
         if em.hasEdge(n, neighbor) or em.hasEdge(neighbor, n):

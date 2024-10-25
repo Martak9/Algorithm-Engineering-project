@@ -4,7 +4,7 @@ import subprocess
 import time
 import os
 
-from werw_inefficent import werw_centrality_algorithm
+from werw_kpath_final import werw_centrality_algorithm
 
 
 

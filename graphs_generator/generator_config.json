@@ -1,9 +1,0 @@
-{
-  "generator": "StdGraphGenerator",
-  "StdGraphGenerator": {
-    "graph_flag": "graph",
-    "result_folder": "../graph",
-    "n": 6,
-    "m": 10
-  }
-}

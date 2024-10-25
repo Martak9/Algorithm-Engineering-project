@@ -1,11 +1,13 @@
 import csv
 import os
 
+
 class CsvWriter:
     def __new__(cls):
         if not hasattr(cls, 'instance'):
             cls.instance = super(CsvWriter, cls).__new__(cls)
         return cls.instance
+
 
     def write(self, data, file_path, labels, item_to_row_func=None, overwrite=False, file_open_mode="w"):
         file_name = f"{file_path}.csv"

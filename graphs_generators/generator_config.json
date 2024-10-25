@@ -1,0 +1,15 @@
+{
+  "generator": "AlbertGraphGenerator",
+  "StdGraphGenerator": {
+    "graph_flag": "graph",
+    "result_folder": "graph",
+    "n": 6,
+    "m": 10
+  },
+  "AlbertGraphGenerator": {
+    "graph_flag": "Albert",
+    "result_folder": "graph",
+    "start_node_number": 160,
+    "max_node_number": 30000
+}
+}

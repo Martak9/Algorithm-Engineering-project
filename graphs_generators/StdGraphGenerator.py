@@ -6,6 +6,7 @@ import os
 import pdb
 
 def double_exp_generator(n : int, m: int, connect=True):
+    #pdb.set_trace()
     if m < n-1 and connect:
         raise ValueError('graph must have at least n-1 edges to be connect')
     if m > n * (n-1)/2:

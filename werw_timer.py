@@ -2,6 +2,7 @@ import random
 import networkit as nk
 from networkit import Graph
 from csv_writer import CsvWriter
+from collections import defaultdict
 import time
 
 
@@ -29,15 +30,13 @@ def WERW_KPath(G: Graph, kappa: int, rho: int, beta: float):
     omega = initialize_weights(G)
 
     for i in range(rho):
+        #if i % 1000 == 0:  # Print progress every 1000 iterations
+            #print(f"WERW_KPath progress: {i}/{rho} iterations")
         vn = random.choices(list(G.iterNodes()), weights=list(normalized_degrees.values()), k=1)[0]
-
-        start_time = time.time()
         MessagePropagation(G, vn, kappa, omega, beta)
-        end_time = time.time()
-        print(f"Messagepropagation {end_time - start_time:.4f} seconds")
 
     end_time = time.time()
-    print(f"WERW_KPath execution time: {end_time - start_time:.2f} seconds")
+    #print(f"WERW_KPath execution time: {end_time - start_time:.2f} seconds")
     return omega
 
 
@@ -52,12 +51,20 @@ def MessagePropagation(G: Graph, start: int, kappa: int, omega: dict, beta: floa
 
         if not unvisited_neighbors:
             break
+        start_time = time.time()
         total_weight = sum(omega.get((min(current, v), max(current, v)), 0) for v in unvisited_neighbors)
+        end_time = time.time()
+        print(f"total_weight {end_time - start_time:.4f} seconds")
 
+        start_time = time.time()
         probs = [omega.get((min(current, v), max(current, v)), 0) / total_weight for v in unvisited_neighbors]
+        end_time = time.time()
+        print(f"probs {end_time - start_time:.4f} seconds")
 
+        start_time = time.time()
         next_node = random.choices(unvisited_neighbors, weights=probs, k=1)[0]
-
+        end_time = time.time()
+        print(f"next_node {end_time - start_time:.4f} seconds")
 
         edge = (min(current, next_node), max(current, next_node))
         omega[edge] += beta
@@ -97,3 +104,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    

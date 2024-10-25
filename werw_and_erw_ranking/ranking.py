@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 import networkit as nk
-from werw_kpath_final import werw_centrality_algorithm
+from tests.werw_test import werw_centrality_algorithm
 from erw_kpath_final import erw_centrality_algorithm
 import csv
 import pandas as pd
@@ -68,11 +68,11 @@ def calculate_average_distance(distances):
 
 def run_full_test(test_number, directory):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_directory = os.path.join(directory, f"test_results_{timestamp}_k=20")
+    output_directory = os.path.join("werw_and_erw_ranking/results_albert", f"test_results_{timestamp}_k=20")
     os.makedirs(output_directory, exist_ok=True)
 
     reader = nk.graphio.EdgeListReader(separator=" ", firstNode=0, continuous=False, directed=False)
-    G = reader.read("../graph/edges/graph(n=500, m=44800).txt")
+    G = reader.read("graph/albert/Albert(n=20480, m=102380).txt")
 
     total_average_distances = {
         "werw_erw": 0
@@ -113,7 +113,7 @@ def run_full_test(test_number, directory):
         csvwriter.writerow([])
         csvwriter.writerow(['Overall Average', overall_average_distances["werw_erw"]])
 
-    show_csv_as_table(csv_output_file, "Test results: k=20, n=500, m=44800", output_directory)
+    show_csv_as_table(csv_output_file, "Test results: k=20, n=20480, m=102380", output_directory)
 
     print(f"Overall average distance WERW-ERW: {overall_average_distances['werw_erw']}")
 

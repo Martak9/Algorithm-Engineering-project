@@ -49,20 +49,24 @@ def WERW_KPath(G: Graph, kappa: int, rho: int, beta: float):
     return omega
 
 def calculate_probability(G: Graph, current: int, neighbor: int, omega: dict, unvisited_neighbors: list):
+    # Calculate the denominator (sum of weights of all unvisited edges)
     denominator = sum(omega.get((min(current, v), max(current, v)), 0) for v in unvisited_neighbors)
 
+    # If denominator is 0, return 0 to avoid division by zero
     if denominator == 0:
         return 0
 
+    # Calculate the weight of the current edge
     edge_weight = omega.get((min(current, neighbor), max(current, neighbor)), 0)
 
+    # Calculate and return the probability
     return edge_weight / denominator
 
 def MessagePropagation(G: Graph, start: int, kappa: int, omega: dict, beta: float):
     start_time = time.time()
 
     path = [start]
-    for _ in range(kappa - 1):
+    for _ in range(kappa - 1):  # kappa - 1 perché il nodo di partenza è già nel cammino
         current = path[-1]
         unvisited_neighbors = [v for v in G.iterNeighbors(path[-1]) if v not in path]
         if not unvisited_neighbors:
@@ -73,6 +77,7 @@ def MessagePropagation(G: Graph, start: int, kappa: int, omega: dict, beta: floa
             for neighbor in unvisited_neighbors
         ]
 
+        # Choose next node
         next_node = random.choices(unvisited_neighbors, weights=edge_probs, k=1)[0]
 
         update_edge_weight(omega, path[-1], next_node, beta)
@@ -88,8 +93,8 @@ def update_edge_weight(omega: dict, u: int, v: int, beta: float):
 def werw_centrality_algorithm(G: Graph):
     start_time = time.time()
 
-    kappa = 5
-    rho = G.numberOfEdges()
+    kappa = 5  # Maximum path length
+    rho = G.numberOfEdges()  # Number of iterations
     beta = 1.0 / G.numberOfEdges()
 
     omega = WERW_KPath(G, kappa, rho, beta)
@@ -104,12 +109,14 @@ def werw_centrality_algorithm(G: Graph):
 def main():
     start_time = time.time()
 
+    # Load graph
     reader = nk.graphio.EdgeListReader(separator=" ", firstNode=0, continuous=False, directed=False)
     G = reader.read("./graph/edges/graph(n=500, m=22400).txt")
     print(f"Grafo caricato. Nodi: {G.numberOfNodes()}, Archi: {G.numberOfEdges()}")
 
     edge_centrality_sorted = werw_centrality_algorithm(G)
 
+    # Save results to CSV
     csv_data = []
     for u, v, weight in edge_centrality_sorted:
         dict_csv_row = {"edge": f"{u}, {v}", "centrality": weight}

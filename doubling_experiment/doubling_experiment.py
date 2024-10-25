@@ -3,16 +3,16 @@ import json
 import time
 import networkit as nk
 import matplotlib.pyplot as plt
-from werw_kpath_final import werw_centrality_algorithm
+from tests.werw_test import werw_centrality_algorithm
 from erw_kpath_final import erw_centrality_algorithm
-from tabulate import tabulate
+from tabulate import tabulate  # Assicurati di installare questa libreria con pip install tabulate
 
-def load_config(config_file_name="./doubling_experiment_config.json"):
+def load_config(config_file_name="doubling_experiment/doubling_experiment_config.json"):
     with open(config_file_name, 'r') as file:
         config = json.load(file)
     return config
 
-def filter_graph_files(config):
+def filter_graph_files(config, keyword=""):
     result = []
     graph_dir = config["graph"]["graphs_dir"]
     subfolders = config["graph"]["subfolders"]
@@ -25,6 +25,7 @@ def filter_graph_files(config):
         for file in os.listdir(subfolder_path):
             file_path = os.path.join(subfolder_path, file)
             result.append(file_path)
+
     return result
 
 def create_log_directory(config):

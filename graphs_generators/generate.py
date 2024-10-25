@@ -1,4 +1,5 @@
-from graph_generator import StdGraphGenerator
+from StdGraphGenerator import StdGraphGenerator
+from albert_generate import AlbertGraphGenerator
 import json
 
 class GraphGeneratorFactory:
@@ -6,7 +7,7 @@ class GraphGeneratorFactory:
     _config_file: str
     _configuration: str
 
-    def __new__(cls, config_file="./generator_config.json"):
+    def __new__(cls, config_file="graphs_generators/generator_config.json"):
         if not hasattr(cls, 'instance'):
             cls.instance = super(GraphGeneratorFactory, cls).__new__(cls)
             cls.instance._config_file = config_file
