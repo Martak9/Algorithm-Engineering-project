@@ -6,6 +6,7 @@
     "n": 6,
     "m": 10
   },
+  
   "AlbertGraphGenerator": {
     "graph_flag": "Albert",
     "result_folder": "graph",

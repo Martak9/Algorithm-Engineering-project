@@ -6,6 +6,7 @@ from collections import defaultdict
 import time
 
 
+
 def assign_normalized_degree(G: Graph):
     start_time = time.time()
     total_edges = G.numberOfEdges()
@@ -104,4 +105,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    

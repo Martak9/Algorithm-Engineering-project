@@ -2,6 +2,7 @@ import csv
 import os
 
 
+
 class CsvWriter:
     def __new__(cls):
         if not hasattr(cls, 'instance'):

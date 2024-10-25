@@ -2,6 +2,7 @@ from StdGraphGenerator import StdGraphGenerator
 from albert_generate import AlbertGraphGenerator
 import json
 
+
 class GraphGeneratorFactory:
 
     _config_file: str

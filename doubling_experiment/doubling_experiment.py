@@ -7,6 +7,7 @@ from tests.werw_test import werw_centrality_algorithm
 from erw_kpath_final import erw_centrality_algorithm
 from tabulate import tabulate  # Assicurati di installare questa libreria con pip install tabulate
 
+
 def load_config(config_file_name="doubling_experiment/doubling_experiment_config.json"):
     with open(config_file_name, 'r') as file:
         config = json.load(file)

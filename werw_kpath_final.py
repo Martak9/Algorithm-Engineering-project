@@ -4,6 +4,7 @@ from networkit import Graph
 from csv_writer import CsvWriter
 
 
+
 def assign_normalized_degree(G: Graph):
     degrees = {}
     total_nodes = G.numberOfNodes()

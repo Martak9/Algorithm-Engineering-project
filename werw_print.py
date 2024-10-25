@@ -5,6 +5,7 @@ from csv_writer import CsvWriter
 import time
 
 
+
 def assign_normalized_degree(G: Graph):
     start_time = time.time()
     total_edges = G.numberOfEdges()

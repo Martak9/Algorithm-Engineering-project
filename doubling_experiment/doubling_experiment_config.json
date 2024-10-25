@@ -2,6 +2,7 @@
   "log": {
     "log_directory": "doubling_experiment/logs"
   },
+  
   "filter_world": "",
   "result_flag": "graph",
   "strategy_name": "graph",

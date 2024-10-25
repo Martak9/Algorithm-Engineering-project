@@ -5,6 +5,7 @@ from generate_graph import GraphGenerator
 import os
 import networkit as nk
 
+
 class AlbertGraphGenerator(GraphGenerator):
     start_node_number: int
     max_node_number: int

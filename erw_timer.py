@@ -5,6 +5,7 @@ from networkit import Graph
 from csv_writer import CsvWriter
 
 
+
 def assign_normalized_degree(G: Graph):
     start_time = time.time()
 
